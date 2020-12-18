@@ -68,8 +68,9 @@ type Receipt struct {
 	TransactionIndex uint        `json:"transactionIndex"`
 }
 
+//For Special Node
 type ReceiptBlock struct {
-	Logs              []*LogBlock `json:"logs"              gencodec:"required"`
+	Logs []*LogBlock `json:"logs"              gencodec:"required"`
 }
 
 type receiptMarshaling struct {

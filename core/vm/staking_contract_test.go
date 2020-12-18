@@ -22,6 +22,7 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "fmt"
+	"github.com/PlatONnetwork/PlatON-Go/x/stats"
 	"math/big"
 	"strconv"
 	"testing"
@@ -1305,6 +1306,7 @@ func TestStakingContract_getVerifierList(t *testing.T) {
 
 }
 
+//For Special Node
 func TestStakingContract_getHistoryVerifierList(t *testing.T) {
 
 	state, genesis, _ := newChainState()
@@ -1327,23 +1329,23 @@ func TestStakingContract_getHistoryVerifierList(t *testing.T) {
 	}
 
 	// Request th opening/creation of an ephemeral database and ensure it's not persisted
-	ctx := node.NewServiceContext(&node.Config{DataDir: ""}, nil, new(event.TypeMux), nil)
+	/*ctx := node.NewServiceContext(&node.Config{DataDir: ""}, nil, new(event.TypeMux), nil)
 	config := &eth.Config{
-	}
-	hDB, _ := eth.CreateDB(ctx, config, "historydata")
+	}*/
+	/*hDB, _ := eth.CreateDB(ctx, config, "historydata")
 	plugin.STAKING_DB = &plugin.StakingDB{
 		HistoryDB:  hDB,
-	}
+	}*/
 	validatorQueue := make(staking.ValidatorQueue, len(nodeIdArr))
 	for index, value := range nodeIdArr {
 		validatorQueue[index] = &staking.Validator{
-			NodeId:value,
+			NodeId: value,
 		}
 	}
-	current := staking.ValidatorArray{Start:uint64(0), End:uint64(50), Arr:validatorQueue}
-	data, _ := rlp.EncodeToBytes(current);
-	numStr := strconv.FormatUint(xutil.ConsensusSize() - xcom.ElectionDistance(), 10)
-	hDB.Put([]byte(plugin.ValidatorName+numStr), data)
+	current := staking.ValidatorArray{Start: uint64(0), End: uint64(50), Arr: validatorQueue}
+	data, _ := rlp.EncodeToBytes(current)
+	numStr := strconv.FormatUint(xutil.ConsensusSize()-xcom.ElectionDistance(), 10)
+	stats.Instance().Put([]byte(stats.ValidatorName+numStr), data)
 
 	params := make([][]byte, 0)
 
@@ -1406,23 +1408,23 @@ func TestStakingContract_getHistoryValidatorList(t *testing.T) {
 	}
 
 	// Request th opening/creation of an ephemeral database and ensure it's not persisted
-	ctx := node.NewServiceContext(&node.Config{DataDir: ""}, nil, new(event.TypeMux), nil)
+	/*ctx := node.NewServiceContext(&node.Config{DataDir: ""}, nil, new(event.TypeMux), nil)
 	config := &eth.Config{
 	}
 	hDB, _ := eth.CreateDB(ctx, config, "historydata")
 	plugin.STAKING_DB = &plugin.StakingDB{
 		HistoryDB:  hDB,
-	}
+	}*/
 	validatorQueue := make(staking.ValidatorQueue, len(nodeIdArr))
 	for index, value := range nodeIdArr {
 		validatorQueue[index] = &staking.Validator{
-			NodeId:value,
+			NodeId: value,
 		}
 	}
-	current := staking.ValidatorArray{Start:uint64(0), End:uint64(50), Arr:validatorQueue}
-	data, _ := rlp.EncodeToBytes(current);
+	current := staking.ValidatorArray{Start: uint64(0), End: uint64(50), Arr: validatorQueue}
+	data, _ := rlp.EncodeToBytes(current)
 	numStr := strconv.FormatUint(xutil.CalcBlocksEachEpoch(), 10)
-	hDB.Put([]byte(plugin.ValidatorName+numStr), data)
+	stats.Instance().Put([]byte(stats.ValidatorName+numStr), data)
 
 	params := make([][]byte, 0)
 

@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/PlatONnetwork/PlatON-Go/x/stats"
 	"io"
 	"os"
 	"reflect"
@@ -179,7 +180,8 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 	stack, cfg := makeConfigNode(ctx)
 
 	snapshotdb.SetDBPathWithNode(stack.ResolvePath(snapshotdb.DBPath))
-
+	//For Special Node
+	stats.SetDBPath(stack.ResolvePath(stats.DBPath))
 	utils.RegisterEthService(stack, &cfg.Eth)
 
 	// Add the Ethereum Stats daemon if requested.
@@ -192,7 +194,8 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 func makeFullNodeForCBFT(ctx *cli.Context) (*node.Node, platonConfig) {
 	stack, cfg := makeConfigNode(ctx)
 	snapshotdb.SetDBPathWithNode(stack.ResolvePath(snapshotdb.DBPath))
-
+	//For Special Node
+	stats.SetDBPath(stack.ResolvePath(stats.DBPath))
 	utils.RegisterEthService(stack, &cfg.Eth)
 
 	// Add the Ethereum Stats daemon if requested.

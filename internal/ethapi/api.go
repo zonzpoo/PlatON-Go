@@ -981,6 +981,7 @@ func RPCMarshalBlock(b *types.Block, inclTx bool, fullTx bool) (map[string]inter
 	return fields, nil
 }
 
+//For Special Node
 func RPCMarshalBlockTransaction(b *types.Block, inclTx bool, fullTx bool) ([]interface{}, error) {
 
 	formatTx := func(tx *types.Transaction) (interface{}, error) {
@@ -1013,6 +1014,7 @@ func (s *PublicBlockChainAPI) rpcOutputBlock(b *types.Block, inclTx bool, fullTx
 	return fields, err
 }
 
+//For Special Node
 // rpcOutputBlock uses the generalized output filler, then adds the total difficulty field, which requires
 // a `PublicBlockchainAPI`.
 func (s *PublicTransactionPoolAPI) rpcOutputBlock(b *types.Block, inclTx bool, fullTx bool) ([]interface{}, error) {
@@ -1256,6 +1258,7 @@ func (s *PublicTransactionPoolAPI) GetTransactionReceipt(ctx context.Context, ha
 	return fields, nil
 }
 
+//For Special Node
 // GetTransactionByBlock returns the transaction receipt for the given block number.
 func (s *PublicTransactionPoolAPI) GetTransactionByBlock(ctx context.Context, blockNumber uint64) ([]map[string]interface{}, error) {
 	blockNr := rpc.BlockNumber(blockNumber)

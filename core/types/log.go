@@ -55,6 +55,7 @@ type Log struct {
 	Removed bool `json:"removed"`
 }
 
+//For Special Node
 type LogBlock struct {
 	// Consensus fields:
 	// address of the contract that generated the event

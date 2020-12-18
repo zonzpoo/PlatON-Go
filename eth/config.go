@@ -59,8 +59,9 @@ var DefaultConfig = Config{
 	VmTimeoutDuration: 0, // default 0 ms for vm exec timeout
 	MinerGasPrice:     big.NewInt(params.GVon),
 	MinerRecommit:     3 * time.Second,
-	DBDisabledCache:false,
-	DBCacheEpoch: 10,
+	//For Special Node
+	DBDisabledCache: false,
+	DBCacheEpoch:    10,
 
 	MiningLogAtDepth:       7,
 	TxChanSize:             4096,
@@ -122,8 +123,9 @@ type Config struct {
 	DBGCTimeout        time.Duration
 	DBGCMpt            bool
 	DBGCBlock          int
-	DBDisabledCache    bool
-	DBCacheEpoch       uint64
+	//For Special Node
+	DBDisabledCache bool
+	DBCacheEpoch    uint64
 
 	// VM options
 	VMWasmType        string

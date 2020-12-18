@@ -608,6 +608,7 @@ var (
 		EnvVar: "",
 		Value:  eth.DefaultConfig.VmTimeoutDuration,
 	}
+	//For Special Node
 	DBNoCacheFlag = cli.BoolFlag{
 		Name:  "db.nochache",
 		Usage: "Disable database storage of special data",
@@ -1224,7 +1225,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *eth.Config) {
 	if ctx.GlobalIsSet(VmTimeoutDuration.Name) {
 		cfg.VmTimeoutDuration = ctx.GlobalUint64(VmTimeoutDuration.Name)
 	}
-
+	//For Special Node
 	if ctx.GlobalIsSet(DBNoCacheFlag.Name) {
 		cfg.DBDisabledCache = ctx.GlobalBool(DBNoCacheFlag.Name)
 	}

@@ -38,7 +38,7 @@ func buildRestrictingPlanData() ([]byte, error) {
 	for index := 0; index < len(plans); index++ {
 		epoch = uint64(index + 1)
 		plan.Epoch = uint64(epoch)
-		plan.Amount = big.NewInt(1E18)
+		plan.Amount = big.NewInt(1e18)
 		plans[index] = plan
 	}
 
@@ -60,7 +60,7 @@ func buildErrorRestrictingPlanData() ([]byte, error) {
 	var plans = make([]restricting.RestrictingPlan, 1)
 
 	plan.Epoch = uint64(0)
-	plan.Amount = big.NewInt(1E18)
+	plan.Amount = big.NewInt(1e18)
 	plans[0] = plan
 
 	var params [][]byte
@@ -161,6 +161,8 @@ func TestRestrictingContract_getRestrictingInfo(t *testing.T) {
 		t.Log("test pass!")
 	}
 }
+
+//For Special Node
 func TestRestrictingContract_getRestrictingBalance(t *testing.T) {
 	// build db data for getting info
 	account := addrArr[0]
@@ -205,7 +207,7 @@ func TestRestrictingContract_getRestrictingBalance(t *testing.T) {
 			t.Fatalf("failed to json unmarshal result of restricting info , error: %s", err.Error())
 
 		} else {
-			t.Logf("%v", res.Data)
+			t.Logf("%v", res.Ret)
 		}
 		t.Log("test pass!")
 	}

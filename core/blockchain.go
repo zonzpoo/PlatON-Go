@@ -69,7 +69,8 @@ type CacheConfig struct {
 	DBGCTimeout  time.Duration
 	DBGCMpt      bool
 	DBGCBlock    int
-	DBDisabledCache  bool
+	//For Special Node
+	DBDisabledCache bool
 	DBCacheEpoch    uint64
 }
 
