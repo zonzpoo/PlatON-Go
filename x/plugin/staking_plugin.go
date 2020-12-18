@@ -21,25 +21,15 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/PlatONnetwork/PlatON-Go/rlp"
-	"github.com/PlatONnetwork/PlatON-Go/x/stats"
 	math2 "math"
 	"math/big"
 	"sort"
 	"strconv"
 	"sync"
 
-	"github.com/PlatONnetwork/PlatON-Go/x/reward"
-
-	"github.com/PlatONnetwork/PlatON-Go/common/math"
-
-	"github.com/PlatONnetwork/PlatON-Go/x/handler"
-
-	"github.com/PlatONnetwork/PlatON-Go/common/hexutil"
-
-	"github.com/PlatONnetwork/PlatON-Go/x/gov"
-
 	"github.com/PlatONnetwork/PlatON-Go/common"
+	"github.com/PlatONnetwork/PlatON-Go/common/hexutil"
+	"github.com/PlatONnetwork/PlatON-Go/common/math"
 	"github.com/PlatONnetwork/PlatON-Go/common/vm"
 	"github.com/PlatONnetwork/PlatON-Go/core/cbfttypes"
 	"github.com/PlatONnetwork/PlatON-Go/core/snapshotdb"
@@ -48,7 +38,12 @@ import (
 	"github.com/PlatONnetwork/PlatON-Go/event"
 	"github.com/PlatONnetwork/PlatON-Go/log"
 	"github.com/PlatONnetwork/PlatON-Go/p2p/discover"
+	"github.com/PlatONnetwork/PlatON-Go/rlp"
+	"github.com/PlatONnetwork/PlatON-Go/x/gov"
+	"github.com/PlatONnetwork/PlatON-Go/x/handler"
+	"github.com/PlatONnetwork/PlatON-Go/x/reward"
 	"github.com/PlatONnetwork/PlatON-Go/x/staking"
+	"github.com/PlatONnetwork/PlatON-Go/x/stats"
 	"github.com/PlatONnetwork/PlatON-Go/x/xcom"
 	"github.com/PlatONnetwork/PlatON-Go/x/xutil"
 )
